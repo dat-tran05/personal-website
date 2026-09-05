@@ -20,6 +20,8 @@ describe('pageMetadata', () => {
     expect(meta.description).toBe('x')
     expect(meta.alternates?.canonical).toBe('/blog')
     expect(meta.openGraph).toMatchObject({ type: 'website', url: '/blog', title: 'blog' })
+    expect(meta.openGraph).toMatchObject({ images: [{ url: '/opengraph-image' }] })
+    expect(meta.twitter).toMatchObject({ images: ['/opengraph-image'] })
   })
   it('builds article metadata with a published time', () => {
     const meta = pageMetadata({

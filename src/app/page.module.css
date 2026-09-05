@@ -1,0 +1,11 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-section);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}

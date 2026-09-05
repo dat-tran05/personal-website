@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { Karla } from 'next/font/google'
+import { themeBootScript } from '@/lib/theme'
 import '@/styles/globals.css'
 
 const karla = Karla({
@@ -13,6 +14,9 @@ const karla = Karla({
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={karla.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
+      </head>
       <body>
         <div className="column">
           <main>{children}</main>

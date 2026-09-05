@@ -1,0 +1,14 @@
+.button {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  color: var(--mute);
+  font-size: var(--text-small);
+  line-height: 1;
+  font-family: inherit;
+}
+
+.button:hover {
+  color: var(--fg);
+}

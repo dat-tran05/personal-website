@@ -1,0 +1,25 @@
+:root {
+  color-scheme: light;
+  --bg: #faf6ef;
+  --fg: #1f1c19;
+  --mute: #7a736b;
+  --line: #e6dfd3;
+  --acc: #b4482b;
+  --acc-line: #e5b9ab;
+  --acc-hover: #8e3620;
+
+  --space-section: 44px;
+  --space-intro: 36px;
+  --text-small: 14px;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #181614;
+  --fg: #e9e4dc;
+  --mute: #9a9289;
+  --line: #332e29;
+  --acc: #e08a6a;
+  --acc-line: #7a4a38;
+  --acc-hover: #eaa285;
+}

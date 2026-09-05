@@ -35,6 +35,9 @@ export function applyTheme(theme: Theme): void {
 /** Subscribe to `data-theme` changes on <html>; used with useSyncExternalStore. */
 export function subscribeToTheme(onChange: () => void): () => void {
   const observer = new MutationObserver(onChange)
-  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme'],
+  })
   return () => observer.disconnect()
 }

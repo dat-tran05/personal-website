@@ -14,7 +14,11 @@ describe('personJsonLd', () => {
       url: site.url,
       email: `mailto:${site.email}`,
     })
-    expect(person.sameAs).toEqual([site.social.github, site.social.linkedin, site.social.x])
+    expect(person.sameAs).toEqual([
+      site.social.github,
+      site.social.linkedin,
+      site.social.x,
+    ])
     expect(person.affiliation).toMatchObject({ '@type': 'CollegeOrUniversity' })
   })
 })

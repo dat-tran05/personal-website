@@ -25,20 +25,29 @@
 ### Task 1: Scaffold, tooling, tokens, layout shell
 
 **Files:**
+
 - Create: `package.json`, `next.config.ts`, `tsconfig.json`, `eslint.config.mjs`, `.prettierrc`, `vitest.config.ts`, `.gitignore`, `next-env.d.ts` (generated), `mdx-components.tsx`
 - Create: `src/styles/tokens.css`, `src/styles/globals.css`
 - Create: `src/content/site.ts`
 - Create: `src/app/layout.tsx`, `src/app/page.tsx` (temporary "hi")
 
 **Interfaces:**
+
 - Produces `site` from `src/content/site.ts`:
   ```ts
   export const site = {
-    name: 'dat tran', legalName: 'Dat Tran', headline: 'CS Student at MIT',
+    name: 'dat tran',
+    legalName: 'Dat Tran',
+    headline: 'CS Student at MIT',
     url: 'https://datct.com',
-    description: 'dat tran is a cs student at mit exploring ai safety and research. previously at netic, horus health, amplitude, and aws.',
+    description:
+      'dat tran is a cs student at mit exploring ai safety and research. previously at netic, horus health, amplitude, and aws.',
     email: 'datt@mit.edu',
-    social: { github: 'https://github.com/dat-tran05', linkedin: 'https://www.linkedin.com/in/dat-tran05/', x: 'https://x.com/datctran' },
+    social: {
+      github: 'https://github.com/dat-tran05',
+      linkedin: 'https://www.linkedin.com/in/dat-tran05/',
+      x: 'https://x.com/datctran',
+    },
   } as const
   ```
 - Produces CSS variables `--bg --fg --mute --line --acc --acc-line --acc-hover` and class `.column` (560px column).
@@ -55,10 +64,12 @@
 ### Task 2: Theme (boot script + toggle)
 
 **Files:**
+
 - Create: `src/lib/theme.ts`, `src/lib/theme.test.ts`, `src/components/ThemeToggle/ThemeToggle.tsx`, `src/components/ThemeToggle/ThemeToggle.module.css`
 - Modify: `src/app/layout.tsx`
 
 **Interfaces:**
+
 - `src/lib/theme.ts`:
   ```ts
   export type Theme = 'light' | 'dark'
@@ -79,10 +90,12 @@
 ### Task 3: Nav
 
 **Files:**
+
 - Create: `src/components/Nav/Nav.tsx`, `Nav.module.css`, `src/components/Nav/NavLink.tsx` (client, uses `usePathname`)
 - Modify: `src/app/layout.tsx`
 
 **Interfaces:**
+
 - `Nav` server component renders brand + `NAV_ITEMS = [{href:'/',label:'about'},{href:'/experience',label:'experience'},{href:'/projects',label:'projects'},{href:'/blog',label:'blog'}]` + `ThemeToggle`.
 - `NavLink({href,label})`: active when `pathname === href` or (`href !== '/'` and `pathname.startsWith(href + '/')`). Active class sets `color: var(--fg)`, otherwise `var(--mute)`.
 
@@ -93,9 +106,11 @@
 ### Task 4: Shared presentational pieces
 
 **Files:**
+
 - Create: `src/components/VisuallyHidden/VisuallyHidden.tsx`, `src/components/InlineLink/InlineLink.tsx` + `.module.css`, `src/components/PageIntro/PageIntro.tsx` + `.module.css`, `src/components/JsonLd/JsonLd.tsx`
 
 **Interfaces:**
+
 - `VisuallyHidden({as?: 'h1'|'span', children})` → element with `.visually-hidden` class.
 - `InlineLink({href, children, external?})` → `next/link` for internal, `<a target="_blank" rel="noopener noreferrer">` for external (auto-detected by `href.startsWith('http')`). Styles: `color: var(--acc); text-decoration-color: var(--acc-line)`; hover `var(--acc-hover)`.
 - `PageIntro({title, children})` → hidden h1 + `<p class="intro">` (margin 0). Wrapper `<section>` with `gap: 36px` flex column for page content.
@@ -106,10 +121,12 @@
 ### Task 5: About page
 
 **Files:**
+
 - Create: `src/components/SocialLinks/SocialLinks.tsx`, `SocialLinks.module.css`, `src/components/SocialLinks/icons.tsx`
 - Modify: `src/app/page.tsx`
 
 **Interfaces:**
+
 - `icons.tsx` exports `EmailIcon, GitHubIcon, LinkedInIcon, XIcon` (20×20 SVGs copied from handoff, `aria-hidden`).
 - `SocialLinks()` reads `site.email` and `site.social`; renders `<ul>` flex gap 18 of `<a title aria-label style="color: var(--acc); display:flex">`.
 
@@ -119,9 +136,11 @@
 ### Task 6: Experience page
 
 **Files:**
+
 - Create: `src/content/experience.ts`, `src/components/Timeline/Timeline.tsx`, `Timeline.module.css`, `src/app/experience/page.tsx`
 
 **Interfaces:**
+
 - `export type ExperienceEntry = { when: string; org: string; role: string; what: string; link?: { text: string; href: string } }`; `export const experience: ExperienceEntry[]` with the five entries from the spec. For amplitude/aws, `what` is the linked text and `link.text === what`? No: keep it simple — `what: 'agent analytics and infra', link: { href: '...' }`; when `link` is present, wrap the whole `what` in `InlineLink`. So `link?: { href: string }`.
 - `Timeline({entries})` renders the grid per spec; last row line still fills to bottom of its content.
 
@@ -131,9 +150,11 @@
 ### Task 7: Projects page
 
 **Files:**
+
 - Create: `src/content/projects.ts`, `src/components/ProjectList/ProjectList.tsx`, `.module.css`, `src/app/projects/page.tsx`
 
 **Interfaces:**
+
 - `export type Project = { name: string; year: string; url: string; what: string }`, three placeholders from handoff (url `'#'` renders as plain `<a href="#">` via InlineLink).
 - `ProjectList({projects})`.
 
@@ -143,16 +164,19 @@
 ### Task 8: Post loading library (TDD)
 
 **Files:**
+
 - Create: `src/lib/posts.ts`, `src/lib/posts.test.ts`, `src/content/posts/{notes-on-alignment-research,training-for-my-first-triathlon,what-i-learned-founding-horus-health,books-i-read-last-year}.mdx`
 
 **Interfaces:**
+
 ```ts
 export type PostMeta = { slug: string; title: string; date: string; description: string }
-export function getAllPosts(dir?: string): PostMeta[]         // newest first, validated frontmatter
+export function getAllPosts(dir?: string): PostMeta[] // newest first, validated frontmatter
 export function getPostBySlug(slug: string, dir?: string): PostMeta | undefined
-export function formatPostDate(iso: string): string           // '2026-08-14' → 'aug 2026'
-export const POSTS_DIR: string                                // path.join(process.cwd(), 'src/content/posts')
+export function formatPostDate(iso: string): string // '2026-08-14' → 'aug 2026'
+export const POSTS_DIR: string // path.join(process.cwd(), 'src/content/posts')
 ```
+
 Frontmatter: `title`, `date` (YYYY-MM-DD), `description`. Dates: aug 2026, jun 2026, mar 2026, jan 2026 (use the 1st... use 2026-08-14, 2026-06-02, 2026-03-20, 2026-01-08).
 
 - [ ] Step 1: Tests using a fixture dir under `src/lib/__fixtures__/posts` with two mdx files (and one invalid missing title): `getAllPosts` sorts desc and throws a descriptive error on invalid frontmatter; `getPostBySlug` returns undefined for unknown; `formatPostDate('2026-08-14') === 'aug 2026'`; slug is filename without `.mdx`.
@@ -163,10 +187,12 @@ Frontmatter: `title`, `date` (YYYY-MM-DD), `description`. Dates: aug 2026, jun 2
 ### Task 9: Blog index and post pages
 
 **Files:**
+
 - Create: `src/components/PostList/PostList.tsx`, `.module.css`, `src/components/Prose/Prose.tsx`, `Prose.module.css`, `src/app/blog/page.tsx`, `src/app/blog/[slug]/page.tsx`, `src/app/not-found.tsx`
 - Modify: `mdx-components.tsx` (map `a` → `InlineLink`)
 
 **Interfaces:**
+
 - `PostList({posts: PostMeta[]})` rows per spec; title link `color: var(--fg); text-decoration-color: var(--line)`; `<time dateTime={date}>` shows `formatPostDate`.
 - `[slug]/page.tsx`: `generateStaticParams` from `getAllPosts()`, `dynamicParams = false`, `await params`, `notFound()` if unknown, dynamic `import(`@/content/posts/${slug}.mdx`)`, renders `<article>` h1 + time + `<Prose><Post/></Prose>`.
 - `Prose` wraps children in a div with descendant styles (p gap 18 via margin, h2/h3 600, code/pre, blockquote, ul/ol).
@@ -177,13 +203,21 @@ Frontmatter: `title`, `date` (YYYY-MM-DD), `description`. Dates: aug 2026, jun 2
 ### Task 10: Metadata + JSON-LD (TDD)
 
 **Files:**
+
 - Create: `src/lib/metadata.ts`, `src/lib/metadata.test.ts`, `src/lib/jsonld.ts`, `src/lib/jsonld.test.ts`
 - Modify: `src/app/layout.tsx` (root metadata + Person/WebSite JsonLd), each page (`export const metadata = pageMetadata({...})`), `[slug]/page.tsx` (`generateMetadata` + BlogPosting JsonLd)
 
 **Interfaces:**
+
 ```ts
 // metadata.ts
-export function pageMetadata(o: { title?: string; description: string; path: string; type?: 'website'|'article'; publishedTime?: string }): Metadata
+export function pageMetadata(o: {
+  title?: string
+  description: string
+  path: string
+  type?: 'website' | 'article'
+  publishedTime?: string
+}): Metadata
 // root metadata (exported const rootMetadata: Metadata) sets metadataBase, title template `%s · dat tran` / default 'dat tran', description, openGraph siteName, twitter card, alternates.types rss
 // jsonld.ts
 export const PERSON_ID = `${site.url}/#person`
@@ -200,9 +234,11 @@ export function blogPostingJsonLd(p: PostMeta): object
 ### Task 11: Sitemap, robots, RSS, OG image, icons
 
 **Files:**
+
 - Create: `src/app/sitemap.ts`, `src/app/robots.ts`, `src/app/feed.xml/route.ts`, `src/app/opengraph-image.tsx`, `src/app/icon.svg`, `assets/InstrumentSerif-Italic.ttf`, `src/lib/rss.ts`, `src/lib/rss.test.ts`
 
 **Interfaces:**
+
 - `buildRssXml(posts: PostMeta[]): string` (RSS 2.0, escapes `&<>`), tested for channel title/link and one `<item>` per post with `pubDate` in RFC 822.
 - `feed.xml/route.ts`: `export const dynamic = 'force-static'`, returns xml with `Content-Type: application/rss+xml`.
 - `sitemap.ts`: pages + posts (`lastModified: post.date`). `robots.ts`: allow `/`, sitemap `${site.url}/sitemap.xml`.

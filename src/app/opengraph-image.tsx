@@ -13,37 +13,39 @@ const ACC = '#b4482b'
 const MUTE = '#7a736b'
 
 export default async function OpenGraphImage() {
-  const serif = await readFile(join(process.cwd(), 'assets', 'InstrumentSerif-Italic.ttf'))
+  const serif = await readFile(
+    join(process.cwd(), 'assets', 'InstrumentSerif-Italic.ttf'),
+  )
   const host = new URL(site.url).host
 
   return new ImageResponse(
-    (
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: BG,
+        fontFamily: 'Instrument Serif',
+      }}
+    >
+      <div style={{ fontSize: 400, lineHeight: 1, color: ACC, letterSpacing: -12 }}>
+        DT
+      </div>
       <div
         style={{
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          background: BG,
-          fontFamily: 'Instrument Serif',
+          position: 'absolute',
+          bottom: 56,
+          fontSize: 36,
+          color: MUTE,
+          fontFamily: 'sans-serif',
         }}
       >
-        <div style={{ fontSize: 400, lineHeight: 1, color: ACC, letterSpacing: -12 }}>DT</div>
-        <div
-          style={{
-            position: 'absolute',
-            bottom: 56,
-            fontSize: 36,
-            color: MUTE,
-            fontFamily: 'sans-serif',
-          }}
-        >
-          {host}
-        </div>
+        {host}
       </div>
-    ),
+    </div>,
     {
       ...size,
       fonts: [{ name: 'Instrument Serif', data: serif, style: 'italic', weight: 400 }],

@@ -6,7 +6,10 @@ export type JsonLdObject = Record<string, unknown>
 export const PERSON_ID = `${site.url}/#person`
 export const WEBSITE_ID = `${site.url}/#website`
 
-export function personJsonLd(): JsonLdObject & { sameAs: string[]; affiliation: JsonLdObject } {
+export function personJsonLd(): JsonLdObject & {
+  sameAs: string[]
+  affiliation: JsonLdObject
+} {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -41,7 +44,9 @@ export function websiteJsonLd(): JsonLdObject {
   }
 }
 
-export function blogPostingJsonLd(post: PostMeta): JsonLdObject & { mainEntityOfPage: string } {
+export function blogPostingJsonLd(
+  post: PostMeta,
+): JsonLdObject & { mainEntityOfPage: string } {
   const url = `${site.url}/blog/${post.slug}`
   return {
     '@context': 'https://schema.org',

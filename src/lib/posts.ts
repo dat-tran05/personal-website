@@ -11,7 +11,20 @@ export type PostMeta = {
 
 export const POSTS_DIR = path.join(process.cwd(), 'src', 'content', 'posts')
 
-const MONTHS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
+const MONTHS = [
+  'jan',
+  'feb',
+  'mar',
+  'apr',
+  'may',
+  'jun',
+  'jul',
+  'aug',
+  'sep',
+  'oct',
+  'nov',
+  'dec',
+]
 
 /** "2026-08-14" → "aug 2026". Parses the string directly to avoid timezone drift. */
 export function formatPostDate(isoDate: string): string {
@@ -58,6 +71,9 @@ export function getAllPosts(dir: string = POSTS_DIR): PostMeta[] {
     .sort((a, b) => b.date.localeCompare(a.date))
 }
 
-export function getPostBySlug(slug: string, dir: string = POSTS_DIR): PostMeta | undefined {
+export function getPostBySlug(
+  slug: string,
+  dir: string = POSTS_DIR,
+): PostMeta | undefined {
   return getAllPosts(dir).find((post) => post.slug === slug)
 }

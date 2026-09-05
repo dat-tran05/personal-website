@@ -5,7 +5,7 @@ import { pageMetadata } from '@/lib/metadata'
 
 export const metadata = pageMetadata({
   title: 'experience',
-  description: "where dat tran has worked: mit, netic, horus health, amplitude, and aws.",
+  description: 'where dat tran has worked: mit, netic, horus health, amplitude, and aws.',
   path: '/experience',
 })
 

@@ -15,7 +15,11 @@ export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }))
 }
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Params
+}): Promise<Metadata> {
   const { slug } = await params
   const post = getPostBySlug(slug)
   if (!post) return {}

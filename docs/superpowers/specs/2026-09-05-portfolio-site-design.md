@@ -70,28 +70,33 @@ No border radius (except the 6px timeline dot), no shadows, no cards. Transition
 ## Pages
 
 ### about `/`
+
 Three paragraphs, exact copy from handoff. Inline links: netic and horus health → `/experience`; amplitude → https://amplitude.com; aws → https://aws.amazon.com. Book title in `<em>`. Then icon row: email `mailto:datt@mit.edu`, GitHub https://github.com/dat-tran05, LinkedIn https://www.linkedin.com/in/dat-tran05/, X https://x.com/datctran. 20×20 inline SVGs, color acc, each with `title` and `aria-label`. Hidden h1: "dat tran".
 
 ### experience `/experience`
+
 Intro "where i've worked and what i did there." Timeline grid `76px 10px minmax(0,1fr)`, column gap 16px. Dot 6×6 acc with margin-top 11px; 1px line in `line` color fills remaining height. Entries:
 
-| when | org | role | what |
-|---|---|---|---|
-| 2025 – | mit | student, computer science | alignment and frontier research. |
-| 2024 | netic | engineer | built agent harnesses and evals for essential services businesses. |
-| 2023 | horus health | founder | ai for hospital revenue teams. |
-| 2022 | amplitude | software engineer intern | [agent analytics and infra](https://amplitude.com/blog/agent-analytics) |
-| 2021 | aws | software engineer intern | [elastic container service enhanced observability](https://aws.amazon.com/blogs/aws/container-insights-with-enhanced-observability-now-available-in-amazon-ecs/) |
+| when   | org          | role                      | what                                                                                                                                                             |
+| ------ | ------------ | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2025 – | mit          | student, computer science | alignment and frontier research.                                                                                                                                 |
+| 2024   | netic        | engineer                  | built agent harnesses and evals for essential services businesses.                                                                                               |
+| 2023   | horus health | founder                   | ai for hospital revenue teams.                                                                                                                                   |
+| 2022   | amplitude    | software engineer intern  | [agent analytics and infra](https://amplitude.com/blog/agent-analytics)                                                                                          |
+| 2021   | aws          | software engineer intern  | [elastic container service enhanced observability](https://aws.amazon.com/blogs/aws/container-insights-with-enhanced-observability-now-available-in-amazon-ecs/) |
 
 The `what` field supports an optional link (`{ text, href }`); linked text renders with the inline link style. Hidden h1: "experience".
 
 ### projects `/projects`
+
 Intro "things i've built and research i've worked on." List gap 22px; item: header row (name link 600 acc, year mute 14px), description. Three placeholder entries from the handoff. Hidden h1: "projects".
 
 ### blog `/blog`
+
 Intro "occasional writing." Rows gap 14px: title link (fg, underline `line`) and date (mute, 14px, `flex: none`, format `mon yyyy` lowercase). Sorted newest first. Four placeholder posts from the handoff with short placeholder bodies. Hidden h1: "blog".
 
 ### blog post `/blog/[slug]`
+
 Not in the handoff; approved design: same column. `<article>` with h1 title (weight 600, 16px, no size change beyond weight, lowercase), `<time>` date in mute 14px, then MDX body inside `Prose`. Prose styles: paragraphs gap 18px, h2/h3 weight 600 same size, links inline style, lists, blockquote (left 1px line border), inline code and pre in a muted background using tokens. Unknown slug → 404.
 
 ## Theme
@@ -101,6 +106,7 @@ Not in the handoff; approved design: same column. `<article>` with h1 title (wei
 - `ThemeToggle` is a client component; reads the current `data-theme`, flips it, writes localStorage. Only client components: `ThemeToggle` and the nav active-link helper.
 
 ## Navigation
+
 Real routes via `next/link`. Next scrolls to top by default on navigation. No animations.
 
 ## SEO / AEO
@@ -121,13 +127,31 @@ Real routes via `next/link`. Next scrolls to top by default on navigation. No an
 
 ```ts
 // site.ts
-export const site = { name, legalName: 'Dat Tran', headline: 'CS Student at MIT', url: 'https://datct.com', description, email, social: { github, linkedin, x } }
+export const site = {
+  name,
+  legalName: 'Dat Tran',
+  headline: 'CS Student at MIT',
+  url: 'https://datct.com',
+  description,
+  email,
+  social: { github, linkedin, x },
+}
 // experience.ts
-type ExperienceEntry = { when: string; org: string; role: string; what: string; link?: { text: string; href: string } }
+type ExperienceEntry = {
+  when: string
+  org: string
+  role: string
+  what: string
+  link?: { text: string; href: string }
+}
 // projects.ts
 type Project = { name: string; year: string; url: string; what: string }
 // posts frontmatter
-{ title: string; date: string (YYYY-MM-DD); description: string }
+{
+  title: string
+  date: string(YYYY - MM - DD)
+  description: string
+}
 ```
 
 ## Testing

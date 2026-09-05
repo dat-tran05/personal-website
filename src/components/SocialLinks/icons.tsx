@@ -1,6 +1,11 @@
 import type { SVGProps } from 'react'
 
-const base: SVGProps<SVGSVGElement> = { width: 20, height: 20, viewBox: '0 0 24 24', 'aria-hidden': true }
+const base: SVGProps<SVGSVGElement> = {
+  width: 20,
+  height: 20,
+  viewBox: '0 0 24 24',
+  'aria-hidden': true,
+}
 
 export function EmailIcon() {
   return (

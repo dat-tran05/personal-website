@@ -5,7 +5,10 @@ import { site } from '@/content/site'
 describe('rootMetadata', () => {
   it('sets metadataBase, title template and default description', () => {
     expect(String(rootMetadata.metadataBase)).toBe(`${site.url}/`)
-    expect(rootMetadata.title).toEqual({ default: site.name, template: `%s · ${site.name}` })
+    expect(rootMetadata.title).toEqual({
+      default: site.name,
+      template: `%s · ${site.name}`,
+    })
     expect(rootMetadata.description).toBe(site.description)
   })
   it('advertises the rss feed', () => {

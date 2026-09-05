@@ -1,6 +1,13 @@
 import { PageIntro } from '@/components/PageIntro/PageIntro'
 import { ProjectList } from '@/components/ProjectList/ProjectList'
 import { projects } from '@/content/projects'
+import { pageMetadata } from '@/lib/metadata'
+
+export const metadata = pageMetadata({
+  title: 'projects',
+  description: "things dat tran has built and research he's worked on.",
+  path: '/projects',
+})
 
 export default function ProjectsPage() {
   return (

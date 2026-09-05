@@ -3,6 +3,9 @@ import { SocialLinks } from '@/components/SocialLinks/SocialLinks'
 import { VisuallyHidden } from '@/components/VisuallyHidden/VisuallyHidden'
 import { site } from '@/content/site'
 import styles from './page.module.css'
+import { pageMetadata } from '@/lib/metadata'
+
+export const metadata = pageMetadata({ description: site.description, path: '/' })
 
 export default function AboutPage() {
   return (

@@ -1,0 +1,30 @@
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: baseline;
+}
+
+.title {
+  color: var(--fg);
+  text-decoration-color: var(--line);
+}
+
+.title:hover {
+  color: var(--acc-hover);
+}
+
+.date {
+  color: var(--mute);
+  font-size: var(--text-small);
+  flex: none;
+}

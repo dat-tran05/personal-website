@@ -3,7 +3,7 @@ export const site = {
   name: 'dat tran',
   legalName: 'Dat Tran',
   headline: 'CS Student at MIT',
-  url: 'https://datct.com',
+  url: 'https://datctran.com',
   description:
     'dat tran is a cs student at mit exploring ai safety and research. previously at netic, horus health, amplitude, and aws.',
   email: 'datt@mit.edu',

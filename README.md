@@ -1,4 +1,4 @@
-# datct.com
+# datctran.com
 
 personal portfolio for dat tran. four pages (about, experience, projects, blog) built with next.js 16, statically generated, with light/dark themes and full seo/aeo metadata.
 

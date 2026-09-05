@@ -1,0 +1,8 @@
+.link {
+  color: var(--acc);
+  text-decoration-color: var(--acc-line);
+}
+
+.link:hover {
+  color: var(--acc-hover);
+}

@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { Karla } from 'next/font/google'
 import { themeBootScript } from '@/lib/theme'
+import { Nav } from '@/components/Nav/Nav'
 import '@/styles/globals.css'
 
 const karla = Karla({
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body>
         <div className="column">
+          <Nav />
           <main>{children}</main>
         </div>
       </body>

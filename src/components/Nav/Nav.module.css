@@ -1,0 +1,45 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: var(--text-small);
+}
+
+.brand {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.brand:hover {
+  color: var(--fg);
+}
+
+.links {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.link,
+.linkActive {
+  text-decoration: none;
+}
+
+.link {
+  color: var(--mute);
+}
+
+.link:hover {
+  color: var(--fg);
+}
+
+.linkActive {
+  color: var(--fg);
+}
+
+.linkActive:hover {
+  color: var(--fg);
+}

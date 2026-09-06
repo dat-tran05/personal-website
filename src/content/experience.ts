@@ -1,5 +1,5 @@
 export type ExperienceEntry = {
-  /** Display date, e.g. "2024" or "2025 –". */
+  /** Display date, e.g. "2024" or "2024 – 2026". */
   when: string
   org: string
   role: string
@@ -10,32 +10,26 @@ export type ExperienceEntry = {
 
 export const experience: readonly ExperienceEntry[] = [
   {
-    when: '2025 –',
-    org: 'mit',
-    role: 'student, computer science',
-    what: 'alignment and frontier research.',
-  },
-  {
-    when: '2024',
+    when: '2026',
     org: 'netic',
     role: 'engineer',
     what: 'built agent harnesses and evals for essential services businesses.',
   },
   {
-    when: '2023',
+    when: '2024 – 2026',
     org: 'horus health',
-    role: 'founder',
+    role: 'co-founder, cto',
     what: 'ai for hospital revenue teams.',
   },
   {
-    when: '2022',
+    when: '2025',
     org: 'amplitude',
     role: 'software engineer intern',
     what: 'agent analytics and infra.',
     link: { href: 'https://amplitude.com/blog/agent-analytics' },
   },
   {
-    when: '2021',
+    when: '2024',
     org: 'aws',
     role: 'software engineer intern',
     what: 'elastic container service enhanced observability.',

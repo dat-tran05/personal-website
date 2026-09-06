@@ -10,9 +10,13 @@ export function ProjectList({ projects }: Props) {
       {projects.map((project) => (
         <li key={project.name} className={styles.item}>
           <div className={styles.header}>
-            <InlineLink href={project.url} className={styles.name}>
-              {project.name}
-            </InlineLink>
+            {project.url ? (
+              <InlineLink href={project.url} className={styles.name}>
+                {project.name}
+              </InlineLink>
+            ) : (
+              <span className={styles.name}>{project.name}</span>
+            )}
             <span className={styles.year}>{project.year}</span>
           </div>
           <div>{project.what}</div>

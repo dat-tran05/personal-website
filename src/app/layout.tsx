@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { Karla } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 import { JsonLd } from '@/components/JsonLd/JsonLd'
 import { Nav } from '@/components/Nav/Nav'
 import { personJsonLd, websiteJsonLd } from '@/lib/jsonld'
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Nav />
           <main>{children}</main>
         </div>
+        <Analytics />
       </body>
     </html>
   )

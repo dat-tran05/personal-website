@@ -10,6 +10,7 @@ export const projects: readonly Project[] = [
   {
     name: 'foodnex',
     year: '2022 –',
+    url: 'https://www.nbcdfw.com/news/local/dallas-isd-students-create-app-to-help-cut-food-waste-and-hunger/3168176/',
     what: 'ios and android app connecting organizations with surplus food to 37 food pantries and banks across 11 states. 1.2m+ pounds of food delivered so far.',
   },
   {
